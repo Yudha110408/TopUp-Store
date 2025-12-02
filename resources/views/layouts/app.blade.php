@@ -30,14 +30,17 @@
                                 <i class="fas fa-tachometer-alt"></i> Admin
                             </a>
                         @endif
-                        <form action="{{ route('admin.logout') }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" class="hover:text-gray-200">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </button>
-                        </form>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-sm">{{ auth()->user()->name }}</span>
+                            <form action="{{ route('logout') }}" method="POST" class="inline">
+                                @csrf
+                                <button type="submit" class="hover:text-gray-200">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </button>
+                            </form>
+                        </div>
                     @else
-                        <a href="{{ route('admin.login') }}" class="hover:text-gray-200">
+                        <a href="{{ route('login') }}" class="hover:text-gray-200">
                             <i class="fas fa-sign-in-alt"></i> Login
                         </a>
                     @endauth
